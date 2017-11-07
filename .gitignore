@@ -29,5 +29,3 @@
 
  # Ignore .env used for storing keys and access tokens
  .env
-
- public/uploads

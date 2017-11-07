@@ -6,6 +6,7 @@ class User < ApplicationRecord
     user = where(provider: auth_hash.provider, uid: auth_hash.uid).first_or_create
     user.update(
         name: auth_hash.info.name,
+        nickname: auth_hash.info.nickname,
         token: auth_hash.credentials.token,
         secret: auth_hash.credentials.secret
     )
@@ -23,7 +24,7 @@ class User < ApplicationRecord
     if params[:image]
       client.update_with_media(params[:message], params[:image])
     else
-      client.update!(params[:message])
+      resp = client.update!(params[:message])
     end
 
 

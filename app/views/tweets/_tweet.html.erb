@@ -4,4 +4,5 @@
   <span class="timestamp">
     Posted <%= time_ago_in_words(tweet.created_at) %> ago.
   </span>
+  <span class="url"><%= link_to "View", tweet.url, rel: "external" %></span>
 </li>

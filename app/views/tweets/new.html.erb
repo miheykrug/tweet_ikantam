@@ -1,7 +1,7 @@
 <%= form_for :tweet, url: tweets_path, method: :post do |f| %>
   <div class="field">
-    <%= f.text_area :message, placeholder: "Compose new tweet..." %>
-    <%= f.file_field :image %>
+    <%= f.text_area :message, placeholder: "Compose new tweet...", class: "form-control" %>
+    <%= f.file_field :image, class: "btn btn-default btn-file" %>
     <%= f.submit "Send Tweet", class: "btn btn-large btn-primary"%>
   </div>
   <div class="span8">
