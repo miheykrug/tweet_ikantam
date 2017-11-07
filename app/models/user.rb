@@ -12,7 +12,7 @@ class User < ApplicationRecord
     user
   end
 
-  def tweet(tweet)
+  def tweet(params)
     client = Twitter::REST::Client.new do |config|
       config.consumer_key        = ENV['TWITTER_KEY']
       config.consumer_secret     = ENV['TWITTER_SECRET']
@@ -20,12 +20,12 @@ class User < ApplicationRecord
       config.access_token_secret = secret
     end
 
-    client.update!(tweet)
+    if params[:image]
+      client.update_with_media(params[:message], params[:image])
+    else
+      client.update!(params[:message])
+    end
 
-    Rails.logger.info 1111
-    resp = client.update(tweet)
-    Rails.logger.info resp.to_json
-    Rails.logger.info 1111
 
   end
 

@@ -10,12 +10,10 @@
 
   <body>
     <%= render "layouts/navigation" %>
-    <div id="flash">
+    <div class="container">
       <% flash.each do |key, value| %>
-          <div class="flash <%= key %>"><%= value %></div>
+          <%= content_tag(:div, value, class: "alert alert-#{key}") %>
       <% end %>
-    </div>
-    <div class="container-fluid">
       <%= yield %>
     </div>
   </body>

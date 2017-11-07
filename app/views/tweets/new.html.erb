@@ -1,6 +1,14 @@
 <%= form_for :tweet, url: tweets_path, method: :post do |f| %>
   <div class="field">
     <%= f.text_area :message, placeholder: "Compose new tweet..." %>
+    <%= f.file_field :image %>
     <%= f.submit "Send Tweet", class: "btn btn-large btn-primary"%>
+  </div>
+  <div class="span8">
+    <% if current_user.tweets.any? %>
+        <ol class="tweets">
+          <%= render @tweets %>
+        </ol>
+    <% end %>
   </div>
 <% end %>
