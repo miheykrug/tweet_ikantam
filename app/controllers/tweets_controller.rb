@@ -1,21 +1,23 @@
 class TweetsController < ApplicationController
   rescue_from Twitter::Error::DuplicateStatus, with: :tweet_exist
+  before_action :signed_in_user
 
-  def new
+  def index
     @tweets = current_user.tweets.order("created_at desc")
   end
 
   def create
+    @tweets = current_user.tweets.order("created_at desc")
     @tweet = current_user.tweets.build(twitter_params)
     if @tweet.valid?
       tweet = current_user.tweet(twitter_params)
       @tweet.url = tweet.uri
       @tweet.save
       flash[:success] = "Tweet created!"
-      redirect_to '/tweets/new'
+      redirect_to tweets_path
     else
       flash[:danger] = "Tweet is blank! Add text or image."
-      render 'new'
+      render 'index'
     end
 
   end

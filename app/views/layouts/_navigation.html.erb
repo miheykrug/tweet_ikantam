@@ -15,7 +15,7 @@
         <li><%= link_to 'Home', root_path %></li>
         <% if current_user %>
             <li> <%= link_to "Signed in as #{current_user.name}", '#' %></li>
-            <li> <%= link_to "Send a Tweet", new_tweet_path %> </li>
+            <li> <%= link_to "Send a Tweet", tweets_path %> </li>
             <li><%= link_to 'Log Out', logout_path, method: :delete %></li>
         <% end %>
       </ul>
