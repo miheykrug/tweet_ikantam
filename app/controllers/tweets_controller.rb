@@ -7,7 +7,6 @@ class TweetsController < ApplicationController
   end
 
   def create
-    @tweets = current_user.tweets.order("created_at desc")
     @tweet = current_user.tweets.build(twitter_params)
     if @tweet.valid?
       tweet = current_user.tweet(twitter_params)
@@ -17,7 +16,7 @@ class TweetsController < ApplicationController
       redirect_to tweets_path
     else
       flash[:danger] = "Tweet is blank! Add text or image."
-      render 'index'
+      redirect_to tweets_path
     end
 
   end
