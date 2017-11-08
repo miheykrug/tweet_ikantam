@@ -6,7 +6,10 @@ class ApplicationController < ActionController::Base
   end
 
   def signed_in_user
-    redirect_to sign_in_url, notice: "Please sign in." unless !current_user.nil?
+    unless !current_user.nil?
+      redirect_to sign_in_url
+      flash[:info] = "Please sign in."
+    end
   end
   helper_method :current_user
 end
