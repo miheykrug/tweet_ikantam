@@ -23,8 +23,8 @@ class TweetsController < ApplicationController
   end
 
   def tweet_exist
-    flash[:error] = "You already sent this tweet."
-    redirect_back(fallback_location: new_tweet_path)
+    flash[:danger] = "You already sent this tweet."
+    redirect_back(fallback_location: tweets_path)
   end
 
   private
