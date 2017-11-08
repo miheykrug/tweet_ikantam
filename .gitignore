@@ -16,16 +16,18 @@
 # Ignore Byebug command history file.
 .byebug_history
 
- database.yml
- workspace.xml
- doc/
- *.swp
- *~
- .project
- .DS_Store
- .idea
- .idea/workspace.xml
- .secret
+database.yml
+workspace.xml
+doc/
+*.swp
+*~
+.project
+.DS_Store
+.idea
+.idea/workspace.xml
+.secret
 
- # Ignore .env used for storing keys and access tokens
- .env
+# Ignore .env used for storing keys and access tokens
+.env
+
+public/uploads
