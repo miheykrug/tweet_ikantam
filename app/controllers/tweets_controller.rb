@@ -16,7 +16,7 @@ class TweetsController < ApplicationController
       redirect_to tweets_path
     else
       @tweets = current_user.tweets.order("created_at desc")
-      flash[:danger] = "Tweet is blank! Add text or image."
+      flash.now[:danger] = "Tweet is blank! Add text or image."
       render 'index'
     end
 
